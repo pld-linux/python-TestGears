@@ -2,6 +2,7 @@
 %define	module	TestGears
 
 Summary:	TestGears extensions to unittest
+Summary(pl):	Rozszerzenie TestGears do unittest
 Name:		python-TestGears
 Version:	0.2
 Release:	1
@@ -24,10 +25,15 @@ generates a standard unittest.TestSuite for use with any of the
 standard frontends, and provides a distutils command to run tests with
 zero configuration.
 
+%description -l pl
+TestGears udostêpnia automatyczne wykrywanie unittest.TestCases i
+mo¿liwo¶æ uruchamiania testów napisanych jako proste funkcje. Generuje
+standardowy unittest.TestSuite do u¿ywania z dowolnym ze standardowych
+frontendów i udostêpnia polecenie distutils do uruchamiania testów bez
+¿adnej konfiguracji.
+
 %prep
 %setup -q -c
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT
