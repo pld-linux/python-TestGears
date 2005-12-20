@@ -8,8 +8,8 @@ Version:	0.2
 Release:	1
 License:	GPL
 Group:		Development/Languages/Python
-Source0:	http://www.turbogears.org/download/eggs/TestGears-%{version}-py2.4.egg
-# Source0-md5:	2c9393c63bafa0c69d781eb9458febe5
+Source0:	http://www.turbogears.org/download/eggs/%{module}-%{version}.tar.gz
+# Source0-md5:	1911b1555cf8869e14d1f71da590bc0e
 URL:		http://www.turbogears.org/testgears/
 %pyrequires_eq	python
 BuildRequires:	python-devel
@@ -33,21 +33,23 @@ frontendów i udostêpnia polecenie distutils do uruchamiania testów bez
 ¿adnej konfiguracji.
 
 %prep
-%setup -q -c
+%setup -q -n %{module}-%{version}
+
+%build
+python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{_bindir}/easy_install \
-	--no-deps \
-	--script-dir="$RPM_BUILD_ROOT%{_bindir}" \
-	--install-dir="$RPM_BUILD_ROOT%{py_sitescriptdir}" \
-	--always-unzip \
-	%{SOURCE0}
+install -d build/scripts-%{py_ver}
+python ./setup.py install \
+        --single-version-externally-managed \
+        --optimize 2 \
+        --root=$RPM_BUILD_ROOT
 
+%py_ocomp $RPM_BUILD_ROOT%{py_sitescriptdir}
+%py_comp $RPM_BUILD_ROOT%{py_sitescriptdir}
 %py_postclean
-
-echo '%{module}-%{version}-py%{py_ver}.egg' > $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}.pth
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -55,3 +57,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %{py_sitescriptdir}/%{module}*
+%{py_sitescriptdir}/test*
