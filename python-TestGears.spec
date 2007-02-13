@@ -2,7 +2,7 @@
 %define	module	TestGears
 
 Summary:	TestGears extensions to unittest
-Summary(pl.UTF-8):   Rozszerzenie TestGears do unittest
+Summary(pl.UTF-8):	Rozszerzenie TestGears do unittest
 Name:		python-TestGears
 Version:	0.2
 Release:	2
