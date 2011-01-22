@@ -13,8 +13,9 @@ Source0:	http://www.turbogears.org/download/eggs/%{module}-%{version}.tar.gz
 URL:		http://www.turbogears.org/testgears/
 %pyrequires_eq	python
 BuildRequires:	python-devel
-BuildRequires:	unzip
+BuildRequires:	python-modules
 BuildRequires:	python-setuptools
+BuildRequires:	rpm-pythonprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
