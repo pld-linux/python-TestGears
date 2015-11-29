@@ -11,6 +11,7 @@ Group:		Development/Languages/Python
 Source0:	http://www.turbogears.org/download/eggs/%{module}-%{version}.tar.gz
 # Source0-md5:	1911b1555cf8869e14d1f71da590bc0e
 URL:		http://www.turbogears.org/testgears/
+BuildRequires:	rpmbuild(macros) >= 1.710
 %pyrequires_eq	python
 BuildRequires:	python-devel
 BuildRequires:	python-modules
